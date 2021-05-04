@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+    
+    <definition name="default-definition"
+                template="/WEB-INF/pages/tiles/layout/layout.jsp">
+        <put-attribute name="title" value=""></put-attribute>
+        <put-attribute name="header"
+                       value="">
+        </put-attribute>
+        <put-attribute name="footer"
+                       value="">
+        </put-attribute>
+     
+        <put-attribute name="body" value=""></put-attribute>
+    </definition>
+    
+    <definition name="home" extends="default-definition">
+        <put-attribute name="title" value="Pocetak"></put-attribute>
+        <put-attribute name="body"
+                       value="/WEB-INF/pages/internet/home.jsp">
+        </put-attribute>
+    </definition>
+    
+    <definition name="start" extends="default-definition">
+        <put-attribute name="title" value="Broj korisnika"></put-attribute>
+        <put-attribute name="body"
+                       value="/WEB-INF/pages/internet/start.jsp">
+        </put-attribute>
+    </definition>
+    
+    <definition name="users" extends="default-definition">
+        <put-attribute name="title" value="Broj uredjaja"></put-attribute>
+        <put-attribute name="body"
+                       value="/WEB-INF/pages/internet/users.jsp">
+        </put-attribute>
+    </definition>
+    
+    <definition name="devices" extends="default-definition">
+        <put-attribute name="title" value="Broj 4K uredjaja"></put-attribute>
+        <put-attribute name="body"
+                       value="/WEB-INF/pages/internet/devices.jsp">
+        </put-attribute>
+    </definition>
+    
+    <definition name="devices4K" extends="default-definition">
+        <put-attribute name="title" value="Gejmeri"></put-attribute>
+        <put-attribute name="body"
+                       value="/WEB-INF/pages/internet/devices4K.jsp">
+        </put-attribute>
+    </definition>
+    
+     <definition name="gamers" extends="default-definition">
+        <put-attribute name="title" value="Rad od kuce"></put-attribute>
+        <put-attribute name="body"
+                       value="/WEB-INF/pages/internet/gamers.jsp">
+        </put-attribute>
+    </definition>
+    
+    <definition name="remote" extends="default-definition">
+        <put-attribute name="title" value="Cloud"></put-attribute>
+        <put-attribute name="body"
+                       value="/WEB-INF/pages/internet/remoteWorkers.jsp">
+        </put-attribute>
+    </definition>
+    
+    <definition name="cloud" extends="default-definition">
+        <put-attribute name="title" value="Cloud"></put-attribute>
+        <put-attribute name="body"
+                       value="/WEB-INF/pages/internet/cloud.jsp">
+        </put-attribute>
+    </definition>
+    
+    <definition name="rural" extends="default-definition">
+        <put-attribute name="title" value="Cloud"></put-attribute>
+        <put-attribute name="body"
+                       value="/WEB-INF/pages/internet/rural.jsp">
+        </put-attribute>
+    </definition>
+    
+    <definition name="cable" extends="default-definition">
+        <put-attribute name="title" value="Cloud"></put-attribute>
+        <put-attribute name="body"
+                       value="/WEB-INF/pages/internet/cable.jsp">
+        </put-attribute>
+    </definition>
+    
+    <definition name="dsl" extends="default-definition">
+        <put-attribute name="title" value="Cloud"></put-attribute>
+        <put-attribute name="body"
+                       value="/WEB-INF/pages/internet/dsl.jsp">
+        </put-attribute>
+    </definition>
+    
+    <definition name="fiber" extends="default-definition">
+        <put-attribute name="title" value="Cloud"></put-attribute>
+        <put-attribute name="body"
+                       value="/WEB-INF/pages/internet/fiber.jsp">
+        </put-attribute>
+    </definition>
+    
+    <definition name="fiberprice" extends="default-definition">
+        <put-attribute name="title" value="Cloud"></put-attribute>
+        <put-attribute name="body"
+                       value="/WEB-INF/pages/internet/fiberprice.jsp">
+        </put-attribute>
+    </definition>
+    
+    <definition name="result" extends="default-definition">
+        <put-attribute name="title" value="Rezultat"></put-attribute>
+        <put-attribute name="body"
+                       value="/WEB-INF/pages/internet/result.jsp">
+        </put-attribute>
+    </definition>
+
+</tiles-definitions>

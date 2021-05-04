@@ -1,0 +1,247 @@
+package KieRule;
+import es.web.drools.dbo.Internet;
+
+rule "Users"
+lock-on-active true
+    when
+        i : Internet (users != 0)
+    then
+        i.setSpeed(i.getSpeed() + i.getUsers() * 25);
+		update(i);
+end
+
+rule "Devices"
+lock-on-active true
+    when
+        i : Internet (devices != 0)
+    then
+        i.setSpeed(i.getSpeed() + i.getDevices() * 10);
+		update(i);
+end
+
+rule "4K"
+lock-on-active true
+    when
+        i : Internet (devices4K != 0)
+    then
+        i.setSpeed(i.getSpeed() + i.getDevices4K() * 15);
+		update(i);
+end
+
+rule "Gamers"
+lock-on-active true
+    when
+        i : Internet (gamers != 0)
+    then
+        i.setSpeed(i.getSpeed() + i.getGamers() * 25);
+		update(i);
+end
+
+rule "Work remote"
+lock-on-active true
+    when
+        i : Internet (remoteWorkers != 0)
+    then
+        i.setSpeed(i.getSpeed() + i.getRemoteWorkers() * 25);
+		update(i);
+end 
+
+rule "Retko cloud"
+lock-on-active true
+    when
+        i : Internet (cloud == 1)
+    then
+        i.setSpeed(i.getSpeed() + 20);
+		update(i);
+end
+
+rule "Cesto cloud"
+lock-on-active true
+    when
+        i : Internet (cloud == 2)
+    then
+        i.setSpeed(i.getSpeed() + 50);
+		update(i);
+end
+
+rule "Final speed"
+lock-on-active true
+    when
+        i : Internet (speed != 0)
+    then
+        i.setSpeed(i.getSpeed() * 0.75);
+		update(i);
+end
+
+//odlucivanje
+
+rule "Spor u gradu"
+
+    when
+        i : Internet (speed < 100 && rural == false)
+    then
+        i.setType("Cable");
+		update(i);
+end
+
+rule "Spor kablovski u selu"
+
+    when
+        i : Internet (speed < 100 && rural == true && cabel == true)
+    then
+        i.setType("Cable");
+		update(i);
+end
+
+rule "Spor dsl u selu"
+
+    when
+        i : Internet (speed < 100 && rural == true && cabel == false && dsl == true)
+    then
+        i.setType("DSL");
+		update(i);
+end
+
+rule "Spor satelitski u selu"
+
+    when
+        i : Internet (speed < 100 && rural == true && cabel == false && dsl == false)
+    then
+        i.setType("Satelite");
+		update(i);
+end
+
+rule "Srednji u gradu"
+
+    when
+        i : Internet (speed > 100 && speed < 200 && rural == false)
+    then
+        i.setType("Cable");
+		update(i);
+end
+
+rule "Srednji kablovski u selu"
+
+    when
+        i : Internet (speed > 100 && speed < 200 && rural == true && cabel == true)
+    then
+        i.setType("Cable");
+		update(i);
+end
+
+rule "Srednji fiber u selu"
+
+    when
+        i : Internet (speed > 100 && speed < 200 && rural == true && cabel == false && fiber == true)
+    then
+        i.setType("Fiber");
+		update(i);
+end
+
+rule "Srednji fiber ugradnja u selu"
+
+    when
+        i : Internet (speed > 100 && speed < 200 && rural == true && cabel == false && fiber == false && price == true)
+    then
+        i.setType("Fiber");
+		update(i);
+end
+
+rule "srednji dsl u selu"
+
+    when
+        i : Internet (speed > 100 && speed < 200 && rural == true && cabel == false && dsl == true)
+    then
+        i.setType("DSL");
+		update(i);
+end
+
+rule "srednji nista"
+
+    when
+        i : Internet (speed > 100 && speed < 200 && rural == true && cabel == false && dsl == false)
+    then
+        i.setType("None");
+		update(i);
+end
+
+rule "Brzi u gradu"
+
+    when
+        i : Internet (speed > 200 && speed < 500 && rural == false)
+    then
+        i.setType("Fiber");
+		update(i);
+end
+
+rule "Brzi u selu fiber"
+
+    when
+        i : Internet (speed > 200 && speed < 500 && rural == true && fiber == true)
+    then
+        i.setType("Fiber");
+		update(i);
+end
+
+rule "Brzi u selu kabal"
+
+    when
+        i : Internet (speed > 200 && speed < 500 && rural == true && fiber == false && cabel == true)
+    then
+        i.setType("Cabel");
+		update(i);
+end
+
+rule "Brzi u selu fiber ugradnja"
+
+    when
+        i : Internet (speed > 200 && speed < 500 && rural == true && fiber == false && cabel == false && price == true)
+    then
+        i.setType("Fiber");
+		update(i);
+end
+
+rule "Brzi u selu nista"
+
+    when
+        i : Internet (speed > 200 && speed < 500 && rural == true && fiber == false && cabel == false)
+    then
+        i.setType("None");
+		update(i);
+end
+
+rule "Ultra brzi grad"
+
+    when
+        i : Internet (speed > 500 && rural == false)
+    then
+        i.setType("Fiber");
+		update(i);
+end
+
+rule "Ultra brzi fiber"
+
+    when
+        i : Internet (speed > 500 && rural == true && fiber == true)
+    then
+        i.setType("Fiber");
+		update(i);
+end
+
+rule "Ultra brzi ugradnja"
+
+    when
+        i : Internet (speed > 500 && rural == true && fiber == false && price == true)
+    then
+        i.setType("Fiber");
+		update(i);
+end
+
+rule "Ultra brzi nista"
+
+    when
+        i : Internet (speed > 500 && rural == true && fiber == false && price == false)
+    then
+        i.setType("None");
+		update(i);
+end
